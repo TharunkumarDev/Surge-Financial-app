@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Workaround for Isar library compatibility with SDK 36 -->
+    <attr name="lStar" format="float" />
+</resources>

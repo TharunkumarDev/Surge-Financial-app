@@ -1,0 +1,43 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // User profile and settings
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Expenses sub-collection
+      match /expenses/{expenseId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Wallet sub-collection/document
+      match /wallet/{document=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Loans sub-collection
+      match /loans/{loanId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Subscriptions sub-collection
+      match /subscriptions/{subId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+    
+    // Payment sessions (Required for guest payments)
+    match /payment_sessions/{sessionId} {
+      allow create, read: if true;
+      allow update: if false; // Managed by backend or restricted
+      allow delete: if false;
+    }
+    
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

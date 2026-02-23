@@ -1,0 +1,8 @@
+# Android Release Signing Template
+# Copy this to key.properties and fill with your actual keystore details.
+# DO NOT COMMIT THE ACTUAL key.properties WITH PASSWORDS TO VERSION CONTROL.
+
+storePassword=YOUR_STORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=upload
+storeFile=key.jks
