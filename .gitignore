@@ -50,3 +50,12 @@ app.*.map.json
 !assets/**/*.png
 !ios/Runner/Assets.xcassets/**/*.png
 !android/app/src/main/res/**/*.png
+
+# Firebase/Google configuration files
+lib/firebase_options.dart
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# Environmental variables
+.env
+.env.*
